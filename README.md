@@ -25,46 +25,23 @@ fastmcp run server.py
 python server.py
 ```
 
-By default the server uses STDIO transport. For HTTP/SSE deployment, see [FastMCP deployment docs](https://gofastmcp.com/deployment).
+The server uses **Streamable HTTP** transport by default (port 8000, path `/mcp`). Connect at `http://127.0.0.1:8000/mcp`. For STDIO or SSE, see [FastMCP deployment docs](https://gofastmcp.com/deployment).
 
 ## Cursor Configuration
 
-Add to your Cursor MCP settings (e.g. `~/.cursor/mcp.json` or Cursor Settings → MCP):
+Add to your Cursor MCP settings (e.g. `~/.cursor/mcp.json` or Cursor Settings → MCP). Use the **URL** transport for streaming HTTP:
 
 ```json
 {
   "mcpServers": {
     "file-system": {
-      "command": "/path/to/file-system-mcp/.venv/bin/python",
-      "args": ["/path/to/file-system-mcp/server.py"]
+      "url": "http://127.0.0.1:8000/mcp"
     }
   }
 }
 ```
 
-Or with system Python:
-```json
-{
-  "mcpServers": {
-    "file-system": {
-      "command": "python",
-      "args": ["/path/to/file-system-mcp/server.py"]
-    }
-  }
-}
-```
-
-Or with `uv`:
-```json
-{
-  "mcpServers": {
-    "file-system": {
-      "command": "uv",
-      "args": ["run", "python", "/path/to/file-system-mcp/server.py"]
-    }
-  }
-}
-```
+Start the server first: `fastmcp run server.py` (or `python server.py`).
 
 ## Tools
 
