@@ -15,19 +15,25 @@ pip install -r requirements.txt
 
 ## Running the Server
 
-**With FastMCP CLI (recommended):**
+**With FastMCP CLI (recommended)** â€” uses `fastmcp.json` for Streamable HTTP (port 8010):
 
 ```bash
-fastmcp run server.py
+fastmcp run
 ```
 
-**Or directly:**
+Or specify the server and transport explicitly:
+
+```bash
+fastmcp run server.py --transport streamable-http --port 8010 --path /mcp
+```
+
+**Or run the script directly** (also uses Streamable HTTP):
 
 ```bash
 python server.py
 ```
 
-The server uses **Streamable HTTP** transport by default (port 8010, path `/mcp`). Connect at `http://127.0.0.1:8010/mcp`. For STDIO or SSE, see [FastMCP deployment docs](https://gofastmcp.com/deployment).
+Connect at `http://127.0.0.1:8010/mcp`. For STDIO or SSE, see [FastMCP deployment docs](https://gofastmcp.com/deployment).
 
 ## Cursor Configuration
 
@@ -43,7 +49,7 @@ Add to your Cursor MCP settings (e.g. `~/.cursor/mcp.json` or Cursor Settings â†
 }
 ```
 
-Start the server first: `fastmcp run server.py` (or `python server.py`).
+Start the server first: `fastmcp run` (or `python server.py`).
 
 ## Tools
 
